@@ -4,10 +4,13 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import spring.rest.dao.EmployeeDAO;
+import spring.rest.dao.EmployeeDAOImp;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
@@ -53,6 +56,13 @@ public class MyConfig {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory().getObject());
         return transactionManager;
+    }
+
+    @Bean
+    public JdbcTemplate jdbcTemplate() {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        jdbcTemplate.setDataSource(dataSource());
+        return jdbcTemplate;
     }
 
 }
