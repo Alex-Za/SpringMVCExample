@@ -1,19 +1,20 @@
 package spring.rest.configuration;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.mchange.v2.c3p0.DriverManagerDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import spring.rest.dao.EmployeeDAO;
-import spring.rest.dao.EmployeeDAOImp;
+import spring.rest.dao.UserDao;
+import spring.rest.dao.UserDaoImp;
+
 
 import javax.sql.DataSource;
-import java.beans.PropertyVetoException;
 import java.util.Properties;
 
 @Configuration
@@ -24,15 +25,11 @@ public class MyConfig {
 
     @Bean
     public DataSource dataSource() {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        try {
-            dataSource.setDriverClass("org.postgresql.Driver");
-            dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres");
-            dataSource.setUser("postgres");
-            dataSource.setPassword("postgres");
-        } catch (PropertyVetoException e) {
-            e.printStackTrace();
-        }
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClass("org.postgresql.Driver");
+        dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres");
+        dataSource.setUser("user");
+        dataSource.setPassword("11201513");
         return dataSource;
     }
 
@@ -63,6 +60,12 @@ public class MyConfig {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource());
         return jdbcTemplate;
+    }
+
+    @Bean
+    public NamedParameterJdbcTemplate namedParameterJdbcTemplate() {
+        NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource());
+        return namedParameterJdbcTemplate;
     }
 
 }
