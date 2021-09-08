@@ -3,8 +3,11 @@ package spring.rest.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import spring.rest.entity.Singer;
+import spring.rest.entity.SingerSummary;
 import spring.rest.entity.User;
 import spring.rest.service.SingerService;
+import spring.rest.service.SingerSummaryService;
+import spring.rest.service.SingerSummaryUntype;
 import spring.rest.service.UserService;
 
 import java.util.Date;
@@ -19,36 +22,69 @@ public class MyController {
     @Autowired
     private SingerService singerService;
 
+    @Autowired
+    private SingerSummaryUntype singerSummaryUntype;
 
-    @RequestMapping("delete-singer")
-    public String deleteSinger() {
-        String resultMessage = "";
-        Singer singer = singerService.findById(6L);
-        if (singer != null) {
-            singerService.delete(singer);
-            resultMessage = "Singer was deleted";
-        }
-        return resultMessage;
+    @Autowired
+    private SingerSummaryService singerSummaryService;
+
+    @RequestMapping("get-singers")
+    public List<Singer> getSingers() {
+        return singerService.findAll();
     }
 
-    @RequestMapping("add-singer")
-    public Singer addSinger() {
-        Singer singer = new Singer();
-        singer.setBirthDate(new Date());
-        singer.setFirstName("Sergey");
-        singer.setLastName("Kovalchuk");
-        singer.setVersion(1);
-        Singer resultSinger = singerService.save(singer);
-        System.out.println(resultSinger);
-        return resultSinger;
-    }
+//    @RequestMapping("save-singer")
+//    public Singer saveSinger() {
+//        Singer singer = new Singer();
+//        singer.setFirstName("Anton");
+//        singer.setLastName("Pikachu");
+//        singer.setBirthDate(new Date());
+//        singer.setVersion(0);
+//
+//        return singerService.save(singer);
+//    }
 
+//    @RequestMapping("test")
+//    public List<SingerSummary> test() {
+//        List<SingerSummary> singerSummaryList = singerSummaryService.findAll();
+//        return singerSummaryList;
+//    }
 
-    @RequestMapping("all-singers")
-    public List<Singer> getAllSingers() {
-        List<Singer> allSingers = singerService.findAll();
-        return allSingers;
-    }
+//    @RequestMapping("test")
+//    public String test() {
+//        singerSummaryUntype.displayAllSingerSummary();
+//        return "success";
+//    }
+
+//    @RequestMapping("delete-singer")
+//    public String deleteSinger() {
+//        String resultMessage = "";
+//        Singer singer = singerService.findById(5L);
+//        if (singer != null) {
+//            singerService.delete(singer);
+//            resultMessage = "Singer was deleted";
+//        }
+//        return resultMessage;
+//    }
+//
+//    @RequestMapping("add-singer")
+//    public Singer addSinger() {
+//        Singer singer = new Singer();
+//        singer.setBirthDate(new Date());
+//        singer.setFirstName("Sergey");
+//        singer.setLastName("Kovalchuk");
+//        singer.setVersion(1);
+//        Singer resultSinger = singerService.save(singer);
+//        System.out.println(resultSinger);
+//        return resultSinger;
+//    }
+//
+//
+//    @RequestMapping("all-singers")
+//    public List<Singer> getAllSingers() {
+//        List<Singer> allSingers = singerService.findAll();
+//        return allSingers;
+//    }
 
     @RequestMapping("find-name")
     public String findUserNameByIdTest() {
