@@ -1,60 +1,70 @@
 package spring.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import spring.rest.entity.Employee;
-import spring.rest.exception_handling.EmployeeIncorrectData;
-import spring.rest.exception_handling.NoSuchEmployeeException;
-import spring.rest.service.EmployeeService;
+import spring.rest.entity.Singer;
+import spring.rest.entity.User;
+import spring.rest.service.SingerService;
+import spring.rest.service.UserService;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 public class MyController {
 
     @Autowired
-    private EmployeeService employeeService;
+    private UserService userService;
+    @Autowired
+    private SingerService singerService;
 
-    @RequestMapping("/employees")
-    public List<Employee> getAllEmployees() {
-        List<Employee> allEmpoloyees = employeeService.getAllEmployees();
-        return allEmpoloyees;
-    }
 
-    @RequestMapping("/employees/{id}")
-    public Employee getEmployee(@PathVariable long id) {
-        Employee employee = employeeService.getEmployee(id);
-
-        if (employee == null) {
-            throw new NoSuchEmployeeException("There is no employee with ID = " + id + " long Database");
+    @RequestMapping("delete-singer")
+    public String deleteSinger() {
+        String resultMessage = "";
+        Singer singer = singerService.findById(6L);
+        if (singer != null) {
+            singerService.delete(singer);
+            resultMessage = "Singer was deleted";
         }
-
-        return employee;
+        return resultMessage;
     }
 
-    @PostMapping("/employees")
-    public Employee addNewEmployee(@RequestBody Employee employee) {
-        employeeService.saveEmployee(employee);
-        return employee;
+    @RequestMapping("add-singer")
+    public Singer addSinger() {
+        Singer singer = new Singer();
+        singer.setBirthDate(new Date());
+        singer.setFirstName("Sergey");
+        singer.setLastName("Kovalchuk");
+        singer.setVersion(1);
+        Singer resultSinger = singerService.save(singer);
+        System.out.println(resultSinger);
+        return resultSinger;
     }
 
-    @PutMapping("/employees")
-    public Employee updateEmployee(@RequestBody Employee employee) {
-        employeeService.saveEmployee(employee);
-        return employee;
+
+    @RequestMapping("all-singers")
+    public List<Singer> getAllSingers() {
+        List<Singer> allSingers = singerService.findAll();
+        return allSingers;
     }
 
-    @DeleteMapping("/employee/{id}")
-    public String deleteEmployee(@PathVariable long id) {
-        Employee employee = employeeService.getEmployee(id);
-        if (employee == null) {
-            throw new NoSuchEmployeeException("There is no employee with ID = " + id + " in Database");
-        }
+    @RequestMapping("find-name")
+    public String findUserNameByIdTest() {
+        String userName = userService.findNameById(2L);
+        return userName;
+    }
 
-        employeeService.deleteEmployee(id);
-        return "Employee with ID = " + id + " was deleted.";
+    @RequestMapping("all")
+    public List<User> getAllUsers() {
+        List<User> allUsers = userService.findAll();
+        return allUsers;
+    }
+
+    @RequestMapping("all-user-with-posts")
+    public List<User> getAllUsersWithPosts() {
+        List<User> allUserWithPosts = userService.findAllWithPosts();
+        return allUserWithPosts;
     }
 }
