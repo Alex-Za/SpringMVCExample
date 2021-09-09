@@ -1,5 +1,7 @@
 package spring.rest.entity;
 
+
+import javax.validation.constraints.AssertTrue;
 import java.util.Date;
 
 public class Post {
@@ -10,6 +12,11 @@ public class Post {
     private String location;
     private String title;
     private Long userId;
+
+    @AssertTrue(message = "ERROR!")
+    public boolean isTitleExist() {
+        return title != null;
+    }
 
     public Long getId() {
         return id;

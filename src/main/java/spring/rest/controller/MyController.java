@@ -2,13 +2,8 @@ package spring.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import spring.rest.entity.Singer;
-import spring.rest.entity.SingerSummary;
-import spring.rest.entity.User;
-import spring.rest.service.SingerService;
-import spring.rest.service.SingerSummaryService;
-import spring.rest.service.SingerSummaryUntype;
-import spring.rest.service.UserService;
+import spring.rest.entity.*;
+import spring.rest.service.*;
 
 import java.util.Date;
 import java.util.List;
@@ -23,10 +18,18 @@ public class MyController {
     private SingerService singerService;
 
     @Autowired
+    private AlbumService albumService;
+
+    @Autowired
     private SingerSummaryUntype singerSummaryUntype;
 
     @Autowired
     private SingerSummaryService singerSummaryService;
+
+    @RequestMapping("find-album")
+    public List<Album> getAlbumByTitle() {
+        return albumService.findByTitle("hello");
+    }
 
     @RequestMapping("get-singers")
     public List<Singer> getSingers() {

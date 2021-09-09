@@ -1,5 +1,7 @@
 package spring.rest.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -9,45 +11,31 @@ import java.util.Set;
 @Entity
 @Table(name = "singer")
 public class Singer implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "birth_date")
     private Date birthDate;
+    @Version
+    @Column(name = "version")
     private int version;
-    private Set<Album> albums = new HashSet<>();
-    private Set<Instrument> instruments = new HashSet<>();
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "singer_instrument", joinColumns = @JoinColumn(name = "singer_id"), inverseJoinColumns = @JoinColumn(name = "instrument_id"))
-    public Set<Instrument> getInstruments() {
-        return instruments;
-    }
-
-    public void setInstruments(Set<Instrument> instruments) {
-        this.instruments = instruments;
-    }
-
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "singer", cascade = CascadeType.ALL, orphanRemoval = true)
-    public Set<Album> getAlbums() {
-        return albums;
-    }
+    private Set<Album> albums = new HashSet<>();
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "singer_instrument", joinColumns = @JoinColumn(name = "singer_id"), inverseJoinColumns = @JoinColumn(name = "instrument_id"))
+    private Set<Instrument> instruments = new HashSet<>();
 
     public void setAlbums(Set<Album> albums) {
         this.albums = albums;
     }
 
-    public boolean addAlbum(Album album) {
-        album.setSinger(this);
-        return getAlbums().add(album);
-    }
-
-    public void removeAlbum(Album album) {
-        getAlbums().remove(album);
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     public Long getId() {
         return id;
     }
@@ -56,7 +44,6 @@ public class Singer implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "first_name")
     public String getFirstName() {
         return firstName;
     }
@@ -65,7 +52,6 @@ public class Singer implements Serializable {
         this.firstName = firstName;
     }
 
-    @Column(name = "last_name")
     public String getLastName() {
         return lastName;
     }
@@ -74,8 +60,6 @@ public class Singer implements Serializable {
         this.lastName = lastName;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "birth_date")
     public Date getBirthDate() {
         return birthDate;
     }
@@ -84,14 +68,24 @@ public class Singer implements Serializable {
         this.birthDate = birthDate;
     }
 
-    @Version
-    @Column(name = "version")
     public int getVersion() {
         return version;
     }
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public Set<Album> getAlbums() {
+        return albums;
+    }
+
+    public Set<Instrument> getInstruments() {
+        return instruments;
+    }
+
+    public void setInstruments(Set<Instrument> instruments) {
+        this.instruments = instruments;
     }
 
     @Override

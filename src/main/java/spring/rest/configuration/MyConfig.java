@@ -37,8 +37,8 @@ public class MyConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClass("org.postgresql.Driver");
         dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres");
-        dataSource.setUser("postgres");
-        dataSource.setPassword("postgres");
+        dataSource.setUser("user");
+        dataSource.setPassword("11201513");
         return dataSource;
     }
 
@@ -74,6 +74,7 @@ public class MyConfig {
         Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
         hibernateProperties.setProperty("hibernate.show_sql", "true");
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         factoryBean.setJpaProperties(hibernateProperties);
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
         factoryBean.afterPropertiesSet();
