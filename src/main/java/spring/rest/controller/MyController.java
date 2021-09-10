@@ -1,12 +1,15 @@
 package spring.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import spring.rest.entity.*;
 import spring.rest.service.*;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/")
@@ -16,25 +19,34 @@ public class MyController {
     private UserService userService;
     @Autowired
     private SingerService singerService;
-
     @Autowired
     private AlbumService albumService;
-
     @Autowired
     private SingerSummaryUntype singerSummaryUntype;
-
     @Autowired
     private SingerSummaryService singerSummaryService;
+    @Autowired
+    private MelodistService melodistService;
 
-    @RequestMapping("find-album")
-    public List<Album> getAlbumByTitle() {
-        return albumService.findByTitle("hello");
+    @RequestMapping("melodists")
+    public String list(Model uiModel) {
+        List<Melodist> melodists = melodistService.findAll();
+        Map<String, List<Melodist>> test = new HashMap<>();
+        test.put("melodists", melodists);
+        uiModel.addAllAttributes(test);
+
+        return "melodists/list";
     }
 
-    @RequestMapping("get-singers")
-    public List<Singer> getSingers() {
-        return singerService.findAll();
-    }
+//    @RequestMapping("find-album")
+//    public List<Album> getAlbumByTitle() {
+//        return albumService.findByTitle("hello");
+//    }
+//
+//    @RequestMapping("get-singers")
+//    public List<Singer> getSingers() {
+//        return singerService.findAll();
+//    }
 
 //    @RequestMapping("save-singer")
 //    public Singer saveSinger() {

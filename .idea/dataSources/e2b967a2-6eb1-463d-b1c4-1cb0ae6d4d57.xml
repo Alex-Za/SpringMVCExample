@@ -1414,7 +1414,7 @@ true posix/WET
 false posix/Zulu
 true posixrules
 </TimeZones>
-      <StartupTime>1631167704</StartupTime>
+      <StartupTime>1631255295</StartupTime>
     </root>
     <database id="2" parent="1" name="postgres">
       <ObjectId>13463</ObjectId>
@@ -1430,13 +1430,14 @@ true posixrules
 13163||-9223372036854775808|U|G
 13163||10|U|G</Grants>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>9357</IntrospectionStateNumber>
+      <IntrospectionStateNumber>9362</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|42718|42720|1
 sequence|table|42728|42730|1
 sequence|table|42865|42867|1
 sequence|table|42857|42859|1
 sequence|table|42881|42883|1
+sequence|table|42912|42914|1
 sequence|table|42754|42756|1
 sequence|table|42764|42766|1
 </Relations>
@@ -1551,7 +1552,7 @@ sequence|table|42764|42766|1
       <Comment>standard public schema</Comment>
       <StateNumber>275</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>9358</IntrospectionStateNumber>
+      <IntrospectionStateNumber>9363</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="26" parent="2" name="plpgsql">
@@ -1675,80 +1676,91 @@ sequence|table|42764|42766|1
       <StateNumber>9241</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
-    <sequence id="42" parent="25" name="post_id_seq">
+    <sequence id="42" parent="25" name="melodist_id_seq">
+      <ObjectId>42912</ObjectId>
+      <Owner>user</Owner>
+      <StateNumber>9359</StateNumber>
+      <DataType>integer|0s</DataType>
+    </sequence>
+    <sequence id="43" parent="25" name="post_id_seq">
       <ObjectId>42728</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9234</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
-    <sequence id="43" parent="25" name="singer_id_seq">
+    <sequence id="44" parent="25" name="singer_id_seq">
       <ObjectId>42881</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9352</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
-    <sequence id="44" parent="25" name="user_id_seq">
+    <sequence id="45" parent="25" name="user_id_seq">
       <ObjectId>42764</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9244</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
-    <table id="45" parent="25" name="album">
+    <table id="46" parent="25" name="album">
       <ObjectId>42859</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9354</StateNumber>
     </table>
-    <table id="46" parent="25" name="car">
+    <table id="47" parent="25" name="car">
       <ObjectId>42867</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9350</StateNumber>
     </table>
-    <table id="47" parent="25" name="comment">
+    <table id="48" parent="25" name="comment">
       <ObjectId>42720</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9237</StateNumber>
     </table>
-    <table id="48" parent="25" name="image_model">
+    <table id="49" parent="25" name="image_model">
       <ObjectId>42756</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9241</StateNumber>
     </table>
-    <table id="49" parent="25" name="instrument">
+    <table id="50" parent="25" name="instrument">
       <ObjectId>42876</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9355</StateNumber>
     </table>
-    <table id="50" parent="25" name="post">
+    <table id="51" parent="25" name="melodist">
+      <ObjectId>42914</ObjectId>
+      <Owner>user</Owner>
+      <StateNumber>9359</StateNumber>
+    </table>
+    <table id="52" parent="25" name="post">
       <ObjectId>42730</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9237</StateNumber>
     </table>
-    <table id="51" parent="25" name="post_liked_users">
+    <table id="53" parent="25" name="post_liked_users">
       <ObjectId>42738</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9238</StateNumber>
     </table>
-    <table id="52" parent="25" name="singer">
+    <table id="54" parent="25" name="singer">
       <ObjectId>42883</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9354</StateNumber>
     </table>
-    <table id="53" parent="25" name="singer_instrument">
+    <table id="55" parent="25" name="singer_instrument">
       <ObjectId>42892</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9355</StateNumber>
     </table>
-    <table id="54" parent="25" name="user">
+    <table id="56" parent="25" name="user">
       <ObjectId>42766</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9249</StateNumber>
     </table>
-    <table id="55" parent="25" name="user_role">
+    <table id="57" parent="25" name="user_role">
       <ObjectId>42741</ObjectId>
       <Owner>user</Owner>
       <StateNumber>9250</StateNumber>
     </table>
-    <column id="56" parent="45" name="id">
+    <column id="58" parent="46" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -1756,31 +1768,31 @@ sequence|table|42764|42766|1
       <DefaultExpression>nextval(&apos;album_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="57" parent="45" name="release_date">
+    <column id="59" parent="46" name="release_date">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <StateNumber>9349</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="58" parent="45" name="title">
+    <column id="60" parent="46" name="title">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>9349</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="59" parent="45" name="version">
+    <column id="61" parent="46" name="version">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>9349</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="60" parent="45" name="singer_id">
+    <column id="62" parent="46" name="singer_id">
       <Position>5</Position>
       <DataType>bigint|0s</DataType>
       <StateNumber>9349</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <index id="61" parent="45" name="album_pkey">
+    <index id="63" parent="46" name="album_pkey">
       <ObjectId>42863</ObjectId>
       <StateNumber>9349</StateNumber>
       <ColNames>id</ColNames>
@@ -1790,14 +1802,14 @@ sequence|table|42764|42766|1
       <CollationIds>0</CollationIds>
       <ClassIds>3124</ClassIds>
     </index>
-    <key id="62" parent="45" name="album_pkey">
+    <key id="64" parent="46" name="album_pkey">
       <ObjectId>42864</ObjectId>
       <StateNumber>9349</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>album_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="63" parent="45" name="fk1imrvvcsp892ggu1tlcbhavjm">
+    <foreign-key id="65" parent="46" name="fk1imrvvcsp892ggu1tlcbhavjm">
       <ObjectId>42897</ObjectId>
       <StateNumber>9354</StateNumber>
       <ColNames>singer_id</ColNames>
@@ -1807,7 +1819,7 @@ sequence|table|42764|42766|1
       <RefKeyName>singer_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="64" parent="46" name="id">
+    <column id="66" parent="47" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -1815,38 +1827,38 @@ sequence|table|42764|42766|1
       <DefaultExpression>nextval(&apos;car_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="65" parent="46" name="age">
+    <column id="67" parent="47" name="age">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>9350</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="66" parent="46" name="license_plate">
+    <column id="68" parent="47" name="license_plate">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>9350</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="67" parent="46" name="manufacture_date">
+    <column id="69" parent="47" name="manufacture_date">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <StateNumber>9350</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="68" parent="46" name="manufacturer">
+    <column id="70" parent="47" name="manufacturer">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>9350</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="69" parent="46" name="version">
+    <column id="71" parent="47" name="version">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>9350</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="70" parent="46" name="car_pkey">
+    <index id="72" parent="47" name="car_pkey">
       <ObjectId>42874</ObjectId>
       <StateNumber>9350</StateNumber>
       <ColNames>id</ColNames>
@@ -1856,14 +1868,14 @@ sequence|table|42764|42766|1
       <CollationIds>0</CollationIds>
       <ClassIds>3124</ClassIds>
     </index>
-    <key id="71" parent="46" name="car_pkey">
+    <key id="73" parent="47" name="car_pkey">
       <ObjectId>42875</ObjectId>
       <StateNumber>9350</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>car_pkey</UnderlyingIndexName>
     </key>
-    <column id="72" parent="47" name="id">
+    <column id="74" parent="48" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -1871,40 +1883,40 @@ sequence|table|42764|42766|1
       <TypeId>20</TypeId>
       <IdentityKind>by-default</IdentityKind>
     </column>
-    <column id="73" parent="47" name="created_date">
+    <column id="75" parent="48" name="created_date">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
       <StateNumber>9233</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="74" parent="47" name="message">
+    <column id="76" parent="48" name="message">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>9233</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="75" parent="47" name="user_id">
+    <column id="77" parent="48" name="user_id">
       <Position>4</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>9233</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="76" parent="47" name="user_name">
+    <column id="78" parent="48" name="user_name">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>9233</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="77" parent="47" name="post_id">
+    <column id="79" parent="48" name="post_id">
       <Position>6</Position>
       <DataType>bigint|0s</DataType>
       <StateNumber>9233</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <index id="78" parent="47" name="comment_pkey">
+    <index id="80" parent="48" name="comment_pkey">
       <ObjectId>42726</ObjectId>
       <StateNumber>9233</StateNumber>
       <ColNames>id</ColNames>
@@ -1914,14 +1926,14 @@ sequence|table|42764|42766|1
       <CollationIds>0</CollationIds>
       <ClassIds>3124</ClassIds>
     </index>
-    <key id="79" parent="47" name="comment_pkey">
+    <key id="81" parent="48" name="comment_pkey">
       <ObjectId>42727</ObjectId>
       <StateNumber>9233</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>comment_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="80" parent="47" name="fks1slvnkuemjsq2kj4h3vhx7i1">
+    <foreign-key id="82" parent="48" name="fks1slvnkuemjsq2kj4h3vhx7i1">
       <ObjectId>42744</ObjectId>
       <StateNumber>9237</StateNumber>
       <ColNames>post_id</ColNames>
@@ -1931,7 +1943,7 @@ sequence|table|42764|42766|1
       <RefKeyName>post_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="81" parent="48" name="id">
+    <column id="83" parent="49" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -1939,32 +1951,32 @@ sequence|table|42764|42766|1
       <TypeId>20</TypeId>
       <IdentityKind>by-default</IdentityKind>
     </column>
-    <column id="82" parent="48" name="image_bytes">
+    <column id="84" parent="49" name="image_bytes">
       <Position>2</Position>
       <DataType>bytea|0s</DataType>
       <StateNumber>9241</StateNumber>
       <TypeId>17</TypeId>
     </column>
-    <column id="83" parent="48" name="name">
+    <column id="85" parent="49" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>9241</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="84" parent="48" name="post_id">
+    <column id="86" parent="49" name="post_id">
       <Position>4</Position>
       <DataType>bigint|0s</DataType>
       <StateNumber>9241</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="85" parent="48" name="user_id">
+    <column id="87" parent="49" name="user_id">
       <Position>5</Position>
       <DataType>bigint|0s</DataType>
       <StateNumber>9241</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <index id="86" parent="48" name="image_model_pkey">
+    <index id="88" parent="49" name="image_model_pkey">
       <ObjectId>42762</ObjectId>
       <StateNumber>9241</StateNumber>
       <ColNames>id</ColNames>
@@ -1974,21 +1986,21 @@ sequence|table|42764|42766|1
       <CollationIds>0</CollationIds>
       <ClassIds>3124</ClassIds>
     </index>
-    <key id="87" parent="48" name="image_model_pkey">
+    <key id="89" parent="49" name="image_model_pkey">
       <ObjectId>42763</ObjectId>
       <StateNumber>9241</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>image_model_pkey</UnderlyingIndexName>
     </key>
-    <column id="88" parent="49" name="instrument_id">
+    <column id="90" parent="50" name="instrument_id">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>9351</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="89" parent="49" name="instrument_pkey">
+    <index id="91" parent="50" name="instrument_pkey">
       <ObjectId>42879</ObjectId>
       <StateNumber>9351</StateNumber>
       <ColNames>instrument_id</ColNames>
@@ -1999,14 +2011,88 @@ sequence|table|42764|42766|1
       <CollationNames>default</CollationNames>
       <ClassIds>3126</ClassIds>
     </index>
-    <key id="90" parent="49" name="instrument_pkey">
+    <key id="92" parent="50" name="instrument_pkey">
       <ObjectId>42880</ObjectId>
       <StateNumber>9351</StateNumber>
       <ColNames>instrument_id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>instrument_pkey</UnderlyingIndexName>
     </key>
-    <column id="91" parent="50" name="id">
+    <column id="93" parent="51" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>9359</StateNumber>
+      <DefaultExpression>nextval(&apos;melodist_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="94" parent="51" name="first_name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>9359</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="95" parent="51" name="last_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>9359</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="96" parent="51" name="birth_date">
+      <Position>4</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>9359</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="97" parent="51" name="description">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>9359</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="98" parent="51" name="photo">
+      <Position>6</Position>
+      <DataType>bytea|0s</DataType>
+      <StateNumber>9359</StateNumber>
+      <TypeId>17</TypeId>
+    </column>
+    <column id="99" parent="51" name="version">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>9359</StateNumber>
+      <DefaultExpression>0</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="100" parent="51" name="melodist_id_uindex">
+      <ObjectId>42922</ObjectId>
+      <StateNumber>9360</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+    </index>
+    <index id="101" parent="51" name="melodist_pk">
+      <ObjectId>42923</ObjectId>
+      <StateNumber>9361</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+    </index>
+    <key id="102" parent="51" name="melodist_pk">
+      <ObjectId>42924</ObjectId>
+      <StateNumber>9361</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>melodist_pk</UnderlyingIndexName>
+    </key>
+    <column id="103" parent="52" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -2014,43 +2100,43 @@ sequence|table|42764|42766|1
       <TypeId>20</TypeId>
       <IdentityKind>by-default</IdentityKind>
     </column>
-    <column id="92" parent="50" name="caption">
+    <column id="104" parent="52" name="caption">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>9234</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="93" parent="50" name="created_date">
+    <column id="105" parent="52" name="created_date">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
       <StateNumber>9234</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="94" parent="50" name="likes">
+    <column id="106" parent="52" name="likes">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>9234</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="95" parent="50" name="location">
+    <column id="107" parent="52" name="location">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>9234</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="96" parent="50" name="title">
+    <column id="108" parent="52" name="title">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>9234</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="97" parent="50" name="user_id">
+    <column id="109" parent="52" name="user_id">
       <Position>7</Position>
       <DataType>bigint|0s</DataType>
       <StateNumber>9234</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <index id="98" parent="50" name="post_pkey">
+    <index id="110" parent="52" name="post_pkey">
       <ObjectId>42736</ObjectId>
       <StateNumber>9234</StateNumber>
       <ColNames>id</ColNames>
@@ -2060,14 +2146,14 @@ sequence|table|42764|42766|1
       <CollationIds>0</CollationIds>
       <ClassIds>3124</ClassIds>
     </index>
-    <key id="99" parent="50" name="post_pkey">
+    <key id="111" parent="52" name="post_pkey">
       <ObjectId>42737</ObjectId>
       <StateNumber>9234</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>post_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="100" parent="50" name="fkgg4vj1xrsx0fy8gngoh2lm2c4">
+    <foreign-key id="112" parent="52" name="fkgg4vj1xrsx0fy8gngoh2lm2c4">
       <ObjectId>42778</ObjectId>
       <StateNumber>9249</StateNumber>
       <ColNames>user_id</ColNames>
@@ -2077,20 +2163,20 @@ sequence|table|42764|42766|1
       <RefKeyName>user_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="101" parent="51" name="post_id">
+    <column id="113" parent="53" name="post_id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>9235</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="102" parent="51" name="liked_users">
+    <column id="114" parent="53" name="liked_users">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>9235</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="103" parent="51" name="fkbvqf2lklmmi9hiteur1mq0uts">
+    <foreign-key id="115" parent="53" name="fkbvqf2lklmmi9hiteur1mq0uts">
       <ObjectId>42749</ObjectId>
       <StateNumber>9238</StateNumber>
       <ColNames>post_id</ColNames>
@@ -2100,7 +2186,7 @@ sequence|table|42764|42766|1
       <RefKeyName>post_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="104" parent="52" name="id">
+    <column id="116" parent="54" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -2108,31 +2194,31 @@ sequence|table|42764|42766|1
       <DefaultExpression>nextval(&apos;singer_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="105" parent="52" name="birth_date">
+    <column id="117" parent="54" name="birth_date">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <StateNumber>9352</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="106" parent="52" name="first_name">
+    <column id="118" parent="54" name="first_name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>9352</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="107" parent="52" name="last_name">
+    <column id="119" parent="54" name="last_name">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>9352</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="108" parent="52" name="version">
+    <column id="120" parent="54" name="version">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>9352</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="109" parent="52" name="singer_pkey">
+    <index id="121" parent="54" name="singer_pkey">
       <ObjectId>42890</ObjectId>
       <StateNumber>9352</StateNumber>
       <ColNames>id</ColNames>
@@ -2142,28 +2228,28 @@ sequence|table|42764|42766|1
       <CollationIds>0</CollationIds>
       <ClassIds>3124</ClassIds>
     </index>
-    <key id="110" parent="52" name="singer_pkey">
+    <key id="122" parent="54" name="singer_pkey">
       <ObjectId>42891</ObjectId>
       <StateNumber>9352</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>singer_pkey</UnderlyingIndexName>
     </key>
-    <column id="111" parent="53" name="singer_id">
+    <column id="123" parent="55" name="singer_id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>9353</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="112" parent="53" name="instrument_id">
+    <column id="124" parent="55" name="instrument_id">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>9353</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="113" parent="53" name="singer_instrument_pkey">
+    <index id="125" parent="55" name="singer_instrument_pkey">
       <ObjectId>42895</ObjectId>
       <StateNumber>9353</StateNumber>
       <ColNames>instrument_id
@@ -2176,7 +2262,7 @@ singer_id</ColNames>
 </CollationNames>
       <ClassIds>3126,3124</ClassIds>
     </index>
-    <key id="114" parent="53" name="singer_instrument_pkey">
+    <key id="126" parent="55" name="singer_instrument_pkey">
       <ObjectId>42896</ObjectId>
       <StateNumber>9353</StateNumber>
       <ColNames>instrument_id
@@ -2184,7 +2270,7 @@ singer_id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>singer_instrument_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="115" parent="53" name="fk29vlx2jdk8gab10pxpibqg24d">
+    <foreign-key id="127" parent="55" name="fk29vlx2jdk8gab10pxpibqg24d">
       <ObjectId>42907</ObjectId>
       <StateNumber>9356</StateNumber>
       <ColNames>singer_id</ColNames>
@@ -2194,7 +2280,7 @@ singer_id</ColNames>
       <RefKeyName>singer_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="116" parent="53" name="fkh5y4gfpgesl5b6rqcl7ddnak0">
+    <foreign-key id="128" parent="55" name="fkh5y4gfpgesl5b6rqcl7ddnak0">
       <ObjectId>42902</ObjectId>
       <StateNumber>9355</StateNumber>
       <ColNames>instrument_id</ColNames>
@@ -2204,7 +2290,7 @@ singer_id</ColNames>
       <RefKeyName>instrument_pkey</RefKeyName>
       <RefColNames>instrument_id</RefColNames>
     </foreign-key>
-    <column id="117" parent="54" name="id">
+    <column id="129" parent="56" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -2212,51 +2298,51 @@ singer_id</ColNames>
       <TypeId>20</TypeId>
       <IdentityKind>by-default</IdentityKind>
     </column>
-    <column id="118" parent="54" name="bio">
+    <column id="130" parent="56" name="bio">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <StateNumber>9244</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="119" parent="54" name="create_date">
+    <column id="131" parent="56" name="create_date">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
       <StateNumber>9244</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="120" parent="54" name="email">
+    <column id="132" parent="56" name="email">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>9244</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="121" parent="54" name="last_name">
+    <column id="133" parent="56" name="last_name">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>9244</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="122" parent="54" name="name">
+    <column id="134" parent="56" name="name">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>9244</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="123" parent="54" name="password">
+    <column id="135" parent="56" name="password">
       <Position>7</Position>
       <DataType>varchar(3000)|0s</DataType>
       <StateNumber>9244</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="124" parent="54" name="username">
+    <column id="136" parent="56" name="username">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>9244</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="125" parent="54" name="user_pkey">
+    <index id="137" parent="56" name="user_pkey">
       <ObjectId>42772</ObjectId>
       <StateNumber>9244</StateNumber>
       <ColNames>id</ColNames>
@@ -2266,7 +2352,7 @@ singer_id</ColNames>
       <CollationIds>0</CollationIds>
       <ClassIds>3124</ClassIds>
     </index>
-    <index id="126" parent="54" name="uk_ob8kqyqqgmefl0aco34akdtpe">
+    <index id="138" parent="56" name="uk_ob8kqyqqgmefl0aco34akdtpe">
       <ObjectId>42774</ObjectId>
       <StateNumber>9246</StateNumber>
       <ColNames>email</ColNames>
@@ -2276,7 +2362,7 @@ singer_id</ColNames>
       <CollationNames>default</CollationNames>
       <ClassIds>3126</ClassIds>
     </index>
-    <index id="127" parent="54" name="uk_sb8bbouer5wak8vyiiy4pf2bx">
+    <index id="139" parent="56" name="uk_sb8bbouer5wak8vyiiy4pf2bx">
       <ObjectId>42776</ObjectId>
       <StateNumber>9248</StateNumber>
       <ColNames>username</ColNames>
@@ -2286,39 +2372,39 @@ singer_id</ColNames>
       <CollationNames>default</CollationNames>
       <ClassIds>3126</ClassIds>
     </index>
-    <key id="128" parent="54" name="user_pkey">
+    <key id="140" parent="56" name="user_pkey">
       <ObjectId>42773</ObjectId>
       <StateNumber>9244</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>user_pkey</UnderlyingIndexName>
     </key>
-    <key id="129" parent="54" name="uk_ob8kqyqqgmefl0aco34akdtpe">
+    <key id="141" parent="56" name="uk_ob8kqyqqgmefl0aco34akdtpe">
       <ObjectId>42775</ObjectId>
       <StateNumber>9246</StateNumber>
       <ColNames>email</ColNames>
       <UnderlyingIndexName>uk_ob8kqyqqgmefl0aco34akdtpe</UnderlyingIndexName>
     </key>
-    <key id="130" parent="54" name="uk_sb8bbouer5wak8vyiiy4pf2bx">
+    <key id="142" parent="56" name="uk_sb8bbouer5wak8vyiiy4pf2bx">
       <ObjectId>42777</ObjectId>
       <StateNumber>9248</StateNumber>
       <ColNames>username</ColNames>
       <UnderlyingIndexName>uk_sb8bbouer5wak8vyiiy4pf2bx</UnderlyingIndexName>
     </key>
-    <column id="131" parent="55" name="user_id">
+    <column id="143" parent="57" name="user_id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>9236</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="132" parent="55" name="role">
+    <column id="144" parent="57" name="role">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>9236</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="133" parent="55" name="fkfgsgxvihks805qcq8sq26ab7c">
+    <foreign-key id="145" parent="57" name="fkfgsgxvihks805qcq8sq26ab7c">
       <ObjectId>42783</ObjectId>
       <StateNumber>9250</StateNumber>
       <ColNames>user_id</ColNames>

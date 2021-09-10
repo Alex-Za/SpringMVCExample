@@ -17,6 +17,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import spring.rest.dao.UserDao;
 import spring.rest.dao.UserDaoImp;
 
@@ -30,7 +32,7 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "spring.rest.repository")
-public class MyConfig {
+public class MyConfig implements WebMvcConfigurer {
 
     @Bean
     public DataSource dataSource() {
@@ -104,5 +106,11 @@ public class MyConfig {
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource());
         return namedParameterJdbcTemplate;
     }
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.jsp().prefix("/WEB-INF/views/").suffix(".jsp");
+    }
+
 
 }
