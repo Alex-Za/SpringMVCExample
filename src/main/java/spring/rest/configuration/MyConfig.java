@@ -39,8 +39,8 @@ public class MyConfig implements WebMvcConfigurer {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClass("org.postgresql.Driver");
         dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres");
-        dataSource.setUser("user");
-        dataSource.setPassword("11201513");
+        dataSource.setUser("postgres");
+        dataSource.setPassword("postgres");
         return dataSource;
     }
 

@@ -29,13 +29,14 @@ public class MyController {
     private MelodistService melodistService;
 
     @RequestMapping("melodists")
-    public String list(Model uiModel) {
+    public List<Melodist> list(Model uiModel) {
         List<Melodist> melodists = melodistService.findAll();
-        Map<String, List<Melodist>> test = new HashMap<>();
-        test.put("melodists", melodists);
-        uiModel.addAllAttributes(test);
-
-        return "melodists/list";
+        return melodists;
+//        Map<String, List<Melodist>> test = new HashMap<>();
+//        test.put("melodists", melodists);
+//        uiModel.addAllAttributes(test);
+//
+//        return "melodists/list";
     }
 
 //    @RequestMapping("find-album")
